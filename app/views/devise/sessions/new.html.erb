@@ -4,16 +4,16 @@
 	<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: "well"}) do |f| %>
 
 		<fieldset>
-				<legend>Sign In</legend>
-		  <%= f.input :email %>
-		  <%= f.input :password %>
+			<legend>Sign In</legend>
+			  <%= f.input :email %>
+			  <%= f.input :password %>
 
 
-	  <% if devise_mapping.rememberable? -%>
-	    <div><%= f.input :remember_me, as: :boolean %></div>
-	  <% end -%>
+		  <% if devise_mapping.rememberable? -%>
+		    <div><%= f.input :remember_me, as: :boolean %></div>
+		  <% end -%>
 
-	  <div><%= f.button :submit, "Sign in" %></div>
+		  <div><%= f.button :submit, "Sign in" %></div>
 	  </fieldset>
 	<% end %>
 
