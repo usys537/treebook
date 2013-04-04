@@ -3,3 +3,9 @@ usman:
   last_name: "Mohammed"
   email: "usys537@yahoo.com"
   profile_name: "usman"
+
+usman2:
+  first_name: "usman2"
+  last_name: "Mohammed"
+  email: "usm537@yahoo.com"
+  profile_name: "usm537"
