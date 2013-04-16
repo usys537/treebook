@@ -9,3 +9,11 @@ usman2:
   last_name: "Mohammed"
   email: "usm537@yahoo.com"
   profile_name: "usm537"
+
+ mike:
+ 	first_name: "Mike"
+ 	last_name: "The Frog"
+ 	email: "mike@teamtreehouse.com"
+ 	profile_name: "mikethefrog"
+
+
