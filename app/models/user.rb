@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :first_name, :last_name, :profile_name 
+                  :first_name, :last_name, :profile_name, :avatar 
 
   validates :first_name, presence: true
 
@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
                               message: 'Must be formatted correctly.'
                            }
 
+  has_many :albums
+  has_many :pictures
   has_many :statuses
   has_many :user_friendships
   has_many :friends, through: :user_friendships,
@@ -29,6 +31,20 @@ class User < ActiveRecord::Base
                                       foreign_key: :user_id,
                                       conditions: { state: 'pending' }
   has_many :pending_friends, through: :pending_users_friendships, source: :friend
+
+  has_attached_file :avatar, styles: {
+    large: "800x800>", medium: "300x200>", small: "260x180>", thumb: "8x80#>"
+  }, :default_url => "/images/:style/missing.png"
+
+  def self.get_gravatars
+    all.each do |user|
+      if !user.avatar?
+        user.avatar = URI.parse(user.gravatar_url)
+        user.save
+        print "."
+      end
+    end
+  end
                   
 
   def full_name
