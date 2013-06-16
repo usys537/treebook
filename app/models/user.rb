@@ -33,8 +33,8 @@ class User < ActiveRecord::Base
   has_many :pending_friends, through: :pending_users_friendships, source: :friend
 
   has_attached_file :avatar, styles: {
-    large: "800x800>", medium: "300x200>", small: "260x180>", thumb: "8x80#>"
-  }, :default_url => "/images/:style/missing.png"
+    large: "800x800>", medium: "300x200>", small: "260x180>", thumb: "80x80#>"
+  }
 
   def self.get_gravatars
     all.each do |user|
@@ -53,6 +53,10 @@ class User < ActiveRecord::Base
 
   def to_param
     profile_name
+  end
+
+  def to_s
+    first_name
   end
 
   def gravatar_url

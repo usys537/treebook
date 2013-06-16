@@ -1,5 +1,15 @@
 module ApplicationHelper
 
+	# Returns the full title on a per=page basis
+	def full_title(page_title)
+		base_title = "Treebook"
+		if page_title.empty?
+			base_title
+		else
+			"#{base_title} | #{page_title}"
+		end
+	end
+
 	def bootstrap_paperclip_picture(form, paperclip_object)
 		if form.object.send("#{paperclip_object}?")
 			content_tag(:div, class: 'control-group') do
@@ -20,7 +30,7 @@ module ApplicationHelper
 	end
 
 	def avatar_profile_link(user, image_options={}, html_options={})
-		avatar_url = user.avatar? ? user.avatar.url : nil
+		avatar_url = user.avatar? ? user.avatar.url(:small) : nil
 		link_to(image_tag(avatar_url, image_options), profile_path(user.profile_name)) 
 	end
 

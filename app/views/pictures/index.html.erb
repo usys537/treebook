@@ -1,4 +1,4 @@
-
+<% provide(:title, 'Picture Index') %>
 
 <%= link_to 'Add Picture', new_album_picture_path(current_user, @album), class: 'btn pull-right' %>
 
@@ -9,7 +9,9 @@
   <% @pictures.each do |picture| %>
     <li>
       <div class="thumbnail">
-        <%= link_to image_tag(picture.asset.url(:small)), album_picture_path(@user, @album, picture) %><br />
+        <%= link_to image_tag(picture.asset.url(:medium)), album_picture_path(@user, @album, picture) %><br />
+
+        
         <div class="caption">
           <% if picture.caption? %><%= picture.caption %><br /><% end %>
 

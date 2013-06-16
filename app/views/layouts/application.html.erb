@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Treebook</title>
+  <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -31,6 +31,7 @@
 	</div>
 	<div class="container">
 		<i class=""></i>
+		<%=  render_breadcrumbs %>
 		<% flash.each do |type, message| %>
 			<div class="alert <%= flash_class type %>">
 				<button class="close" data-dismiss="alert">x</button>

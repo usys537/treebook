@@ -9,6 +9,7 @@ gem 'devise'
 gem 'simple_form'
 gem 'state_machine'
 gem 'paperclip'
+gem 'twitter-bootstrap-rails'
 
 group :test do
 	gem 'shoulda'
