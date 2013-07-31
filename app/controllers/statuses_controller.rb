@@ -46,6 +46,7 @@ class StatusesController < ApplicationController
 
     respond_to do |format|
       if @status.save
+        current_user.create_activity(@user, 'created')
         format.html { redirect_to @status, notice: 'Status was successfully created.' }
         format.json { render json: @status, status: :created, location: @status }
       else
@@ -66,7 +67,8 @@ class StatusesController < ApplicationController
     respond_to do |format|
       if @status.update_attributes(params[:status]) && 
         @document && @document.update_attributes(params[:status][:document_attributes])
-        format.html { redirect_to @status, notice: 'Status was successfully updated.' }
+        current_user.create_activity(@status, 'Updated') unless @status.valid? || (@status.valid? && @document && !@document.valid?)
+        format.html { redirect_to @status, notice: 'Status was successfully updated' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

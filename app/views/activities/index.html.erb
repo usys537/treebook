@@ -1,0 +1,23 @@
+<% provide(:title, 'Activities') %>
+<div class="page-header">
+  <h1>Activity Feed</h1>
+</div>
+
+
+<% @activities.each do |activity| %>
+ <div class="media">
+      <%= avatar_profile_link activity.user, {}, class: 'pull-left' %>
+        <div class="media-body">
+            <strong class="media-heading"><%= activity.user.full_name %></strong>
+            <%#= render partial: "activities/#{activity.targetable_type}/#{activity.action}",            		locals: { activity: activity }  %>
+            <p>Created a <%= link_to "status Update" %></p>
+      			<small><%= activity.targetable_id %></small>
+      			<p>Updated a <%= link_to "status" %></p>
+      			<small><%= activity.targetable_id %></small>
+      
+        </div><hr />
+ </div>
+
+
+
+<% end %>

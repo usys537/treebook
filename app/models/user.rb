@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
                               with: /^[a-zA-Z0-9_-]+$/,
                               message: 'Must be formatted correctly.'
                            }
-
+  has_many :activities
   has_many :albums
   has_many :pictures
   has_many :statuses
@@ -65,5 +65,13 @@ class User < ActiveRecord::Base
     hash = Digest::MD5.hexdigest(downcased_email)
 
     "http://gravatar.com/avatar/#{hash}"
+  end
+
+  def create_activity(item, action)
+    activity = activities.new
+    activity.targetable = item
+    activity.action = action
+    activity.save
+    activity
   end
 end

@@ -10,10 +10,12 @@ gem 'simple_form'
 gem 'state_machine'
 gem 'paperclip'
 gem 'twitter-bootstrap-rails'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 group :test do
-	gem 'shoulda'
-	gem 'factory_girl_rails'
+	#gem 'shoulda'
+	#gem 'factory_girl_rails'
 end
 
 group :development, :test do
